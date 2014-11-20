@@ -1,3 +1,5 @@
+![](https://travis-ci.org/Trott/freebase-mqlread.svg?branch=master)
+
 freebase-mqlread
 ================
 
