@@ -22,3 +22,15 @@ var options = {key: 'YOUR_API_KEY', as_of_time: '2009-01'};
 
 freebase.mqlread(query, options, callback);
 ````
+
+The above code (once you fill in your own API key) will provide a result like this:
+
+````
+{ result: 
+   { type: '/people/person',
+     children: 
+      [ 'Lourdes Maria Ciccone Leon',
+        'Rocco Ritchie',
+        'David Banda Mwale Ciccone Ritchie' ],
+     id: '/en/madonna' } }
+````
