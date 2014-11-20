@@ -23,7 +23,7 @@ var options = {key: 'YOUR_API_KEY', as_of_time: '2009-01'};
 freebase.mqlread(query, options, callback);
 ````
 
-The above code (once you fill in your own API key) will provide a result like this:
+The above code (once you fill in your own API key) will result in output similar to this:
 
 ````
 { result: 
