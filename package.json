@@ -1,0 +1,34 @@
+{
+  "name": "mqlread",
+  "version": "1.0.0",
+  "description": "Run read-only Metaweb Query Language (MQL) queries on Freebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/lab/bin/lab -t 100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Trott/freebase-mqlread.git"
+  },
+  "keywords": [
+    "freebase",
+    "mql",
+    "mqlread"
+  ],
+  "author": "Rich Trott <rtrott@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Trott/freebase-mqlread/issues"
+  },
+  "homepage": "https://github.com/Trott/freebase-mqlread",
+  "devDependencies": {
+    "code": "^1.2.1",
+    "jshint": "^2.5.10",
+    "lab": "^5.0.2",
+    "precommit-hook": "^1.0.7",
+    "rewire": "^2.1.3"
+  },
+  "dependencies": {
+    "request-json": "^0.5.0"
+  }
+}
