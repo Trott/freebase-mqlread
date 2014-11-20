@@ -16,7 +16,7 @@ var callback = function (err, data) {
 	console.log(data);
 };
 var query = '{"type":"/people/person","id":"/en/madonna","children":[]}';
-var options = {as_of_time: '2009-01'};
+var options = {key: 'YOUR_API_KEY', as_of_time: '2009-01'};
 
 freebase.mqlread(query, options, callback);
 ````
