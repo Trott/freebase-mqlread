@@ -1,4 +1,4 @@
-![](https://travis-ci.org/Trott/freebase-mqlread.svg?branch=master)
+[![Build Status](https://travis-ci.org/Trott/freebase-mqlread.svg?branch=master)](https://travis-ci.org/Trott/freebase-mqlread)
 
 freebase-mqlread
 ================
