@@ -1,5 +1,6 @@
-var rewire = require('rewire');
-var freebase = rewire('../index.js');
+var freebase = require('../index.js');
+
+var nock = require('nock');
 
 var Code = require('code');
 var expect = Code.expect;
@@ -12,23 +13,11 @@ var it = lab.test;
 var beforeEach = lab.beforeEach;
 
 describe('mqlread()', function () {
-	var revert;
 
 	beforeEach(function (done) {
-		if (typeof revert === 'function') {
-			revert();
-			revert = null;
-		}
+		nock.cleanAll();
+		nock.enableNetConnect();
 		done();
-	});
-
-	it('should return an error if no query supplied', function (done) {
-		var callback = function (err) {
-			expect(err).to.be.not.null();
-			done();
-		};
-
-		freebase.mqlread('', {}, callback);
 	});
 
 	it('should return data for a query', function (done) {
@@ -44,14 +33,10 @@ describe('mqlread()', function () {
 	});
 
 	it('should return an error from underlying callback', function (done) {
-		revert = freebase.__set__({client: {
-			get: function (url, cb) {
-				cb(new Error('fhqwhagads'));
-			}
-		}});
+		nock.disableNetConnect();
 
 		var callback = function (err) {
-			expect(err).to.deep.equal(new Error('fhqwhagads'));
+			expect(err.name).to.equal('NetConnectNotAllowedError');
 			done();
 		};
 
@@ -59,11 +44,34 @@ describe('mqlread()', function () {
 	});
 
 	it('should return an error if status code is not 200', function (done) {
-		revert = freebase.__set__({client: {
-			get: function (url, cb) {
-				cb(null, {statusCode: 404}, null);
-			}
-		}});
+		nock('https://www.googleapis.com')
+			.get('/freebase/v1/mqlread?query=&')
+			.reply(400);
+		var callback = function (err) {
+			expect(err).to.be.not.null();
+			done();
+		};
+
+		freebase.mqlread(null, null, callback);
+	});
+
+	it('should return an error if it receives invalid JSON', function (done) {
+		nock('https://www.googleapis.com')
+			.get('/freebase/v1/mqlread?query=&')
+			.reply(200, 'invalid JSON!');
+
+		var callback = function (err) {
+			expect(err).to.be.not.null();
+			done();
+		};
+
+		freebase.mqlread(null, null, callback);
+	});
+
+	it('should return an error if there is an error specified in the JSON', function (done) {
+		nock('https://www.googleapis.com')
+			.get('/freebase/v1/mqlread?query=&')
+			.reply(200, '{"error": {"message": "Oh noes!"}}');
 
 		var callback = function (err) {
 			expect(err).to.be.not.null();
