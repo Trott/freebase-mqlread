@@ -48,7 +48,7 @@ describe('mqlread()', function () {
 			.get('/freebase/v1/mqlread?query=&')
 			.reply(400);
 		var callback = function (err) {
-			expect(err).to.be.not.null();
+			expect(err).to.be.an.object();
 			done();
 		};
 
@@ -61,7 +61,7 @@ describe('mqlread()', function () {
 			.reply(200, 'invalid JSON!');
 
 		var callback = function (err) {
-			expect(err).to.be.not.null();
+			expect(err).to.be.an.object();
 			done();
 		};
 
@@ -74,7 +74,7 @@ describe('mqlread()', function () {
 			.reply(200, '{"error": {"message": "Oh noes!"}}');
 
 		var callback = function (err) {
-			expect(err).to.be.not.null();
+			expect(err).to.be.an.object();
 			done();
 		};
 
