@@ -4,7 +4,7 @@
   "description": "Run read-only Metaweb Query Language (MQL) queries on Freebase",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/lab/bin/lab -t 100"
+    "test": "jshint . && lab -t 100 test"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,10 @@
   },
   "homepage": "https://github.com/Trott/freebase-mqlread",
   "devDependencies": {
-    "code": "^1.2.1",
+    "code": "^2.1.1",
     "jshint": "^2.5.10",
-    "lab": "^5.0.2",
-    "nock": "^0.50.0",
-    "precommit-hook": "^1.0.7"
+    "lab": "^10.3.0",
+    "nock": "^7.7.3"
   },
   "dependencies": {
     "hyperquest": "^1.0.1"
