@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Trott/freebase-mqlread",
   "devDependencies": {
-    "code": "^2.1.1",
+    "code": "^5.2.4",
     "jshint": "^2.5.10",
     "lab": "^10.3.0",
     "nock": "^7.7.3"
