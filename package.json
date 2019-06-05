@@ -24,7 +24,7 @@
   "devDependencies": {
     "code": "^2.1.1",
     "jshint": "^2.5.10",
-    "lab": "^10.3.0",
+    "lab": "^18.0.2",
     "nock": "^7.7.3"
   },
   "dependencies": {
